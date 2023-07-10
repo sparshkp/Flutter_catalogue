@@ -11,92 +11,113 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String name =" ";
   bool ChangeButton =false;
+
+  final _formkey =GlobalKey<FormState>();
+
+  moveToHome(BuildContext context)async{
+   if(_formkey.currentState!.validate()){
+  setState(() {
+  ChangeButton=true;
+  });
+  await Future.delayed(Duration(seconds: 1));
+  await Navigator.pushNamed(context, MyRoutes.homeRoutes);
+  setState(() {
+  ChangeButton =false;
+  });
+                    
+  }
+  }
   @override
   Widget build(BuildContext context) {
     return  Material(
       color: Colors.white,
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Image.network(
-              'https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg',
-              fit: BoxFit.cover,),
-              const SizedBox(
-                height: 5.0,
-              ),
-               Text("Welcome $name",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold
-              )),
-              
-              const SizedBox(
-                height: 10.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical:16.0,horizontal: 32.0),
-                child: Column(children: [
-                  TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: "Enter Username",
-                    labelText: "Username",
-                  ),
-                  onChanged: (value) {
-                    name=value;
-                    setState(() {
-                      
-                    });
-                  },
-                ),
-                TextFormField(
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    hintText: "Enter Password",
-                    labelText: "Password",
-                  ),
-                ),
+        child: Form(
+          key: _formkey,
+          child: Column(
+            children: [
+              Image.network(
+                'https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg',
+                fit: BoxFit.cover,),
                 const SizedBox(
-                height: 40.0,
-              ),
-              InkWell(
-                onTap: () async{
-                  setState(() {
-                  ChangeButton=true;
-                  
-                });
-                await Future.delayed(Duration(seconds: 1));
-                  Navigator.pushNamed(context, MyRoutes.homeRoutes);
-                },
-                child: AnimatedContainer(
-                  duration: Duration(seconds: 1),
-                  height: 50,
-                  width: ChangeButton? 50:150,
-                  alignment: Alignment.center,
-                  child: ChangeButton? Icon(Icons.done,color: Colors.white,):
-                  Text("Login",style:TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.white
-                  )),
-                  
-                  decoration: BoxDecoration(
-                    shape: ChangeButton? BoxShape.circle :BoxShape.rectangle,
-                    //borderRadius: BorderRadius.circular(ChangeButton? 20 :8),
-                    color: Colors.deepPurple,
-              
-                  ),
+                  height: 5.0,
                 ),
-              )
-              /*ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, MyRoutes.homeRoutes);
-      
-                }, child: Text("Login"),
-                style: TextButton.styleFrom(minimumSize: Size(150, 40)),)*/
-                ],),
-              )
-          ],
-          
+                 Text("Welcome $name",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold
+                )),
+                
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical:16.0,horizontal: 32.0),
+                  child: Column(children: [
+                    TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: "Enter Username",
+                      labelText: "Username",
+                    ),
+                    validator: (value) {
+                      if(value!.isEmpty){
+                        return"Username cannot be empty";
+                      }
+                      return null;
+                    },
+                    onChanged: (value) {
+                      name=value;
+                      setState(() {
+                        
+                      });
+                    },
+                  ),
+                  TextFormField(
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      hintText: "Enter Password",
+                      labelText: "Password",
+                    ),
+                    validator: (value) {
+                      if(value!.isEmpty){
+                        return"Password cannot be empty";
+                      }
+                      else if (value.length <6) {
+                        return "Password cannot be less than 6 characters";
+                      }
+                      return null;
+                    }
+                  ),
+                  const SizedBox(
+                  height: 40.0,
+                ),
+                Material(
+                  color: Colors.deepPurple,
+                  borderRadius: BorderRadius.circular(ChangeButton? 20 :8),
+                  child: InkWell(
+                    onTap: () =>moveToHome(context),
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      height: 50,
+                      width: ChangeButton? 50:150,
+                      alignment: Alignment.center,
+                      child: ChangeButton? Icon(Icons.done,color: Colors.white,):
+                      Text("Login",style:TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.white
+                      )),
+                      
+                     
+                    ),
+                  ),
+                )
+                
+                  ],),
+                )
+            ],
+            
+          ),
         ),
       )
     );
