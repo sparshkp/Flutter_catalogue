@@ -30,12 +30,14 @@ final Item catalog;
                           shape: MaterialStateProperty.all(
                             StadiumBorder(),
                           )),
-                      child: "Buy".text.make(),
-                    ).wh(100, 50)
+                      child: "Add to Cart".text.make(),
+                    ).wh(120, 50)
                   ],
                 ).pOnly(right: 8.0).p32(),
       ),
-               appBar: AppBar(),
+               appBar: AppBar(
+                backgroundColor: Colors.transparent,
+               ),
                backgroundColor: MyTheme.Creamcolor,
                body: SafeArea(
                 bottom: false,
@@ -57,6 +59,10 @@ final Item catalog;
                         catalog.name.text.lg.color(MyTheme.Bluishcolor).xl4.bold.make(),
                        catalog.description.text.textStyle(context.captionStyle).xl.make(),
                       10.heightBox,
+                      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.".
+                      text.textStyle(context.captionStyle)
+                      .make().p16()
+                      
                       ],
                     ).py64(),
                   ),
