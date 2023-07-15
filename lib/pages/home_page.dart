@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         onPressed:() {
         Navigator.pushNamed(context, MyRoutes.cartRoutes);
       },),
-        backgroundColor: MyTheme.Creamcolor,
+        backgroundColor: context.cardColor,
         body: SafeArea(
           child: Container(
             padding: Vx.m32,
