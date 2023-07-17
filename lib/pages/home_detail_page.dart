@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalogue_1/widgets/add_to_cart.dart';
 import 'package:flutter_catalogue_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -21,17 +22,7 @@ final Item catalog;
                   buttonPadding: EdgeInsets.zero,
                   children: [
                     "\$${catalog.price}".text.bold.red600.xl4.make(),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            MyTheme.Bluishcolor,
-                          ),
-                          shape: MaterialStateProperty.all(
-                            StadiumBorder(),
-                          )),
-                      child: "Add to Cart".text.make(),
-                    ).wh(120, 50)
+                    AddToCart(catalog: catalog,).wh(120, 50)
                   ],
                 ).pOnly(right: 8.0).p32(),
       ),
