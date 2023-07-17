@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_catalogue_1/pages/cart_page.dart';
 import 'package:flutter_catalogue_1/pages/home_page.dart';
 import 'package:flutter_catalogue_1/pages/login_page.dart';
+import 'package:flutter_catalogue_1/store/store.dart';
 import 'package:flutter_catalogue_1/utilities/routes.dart';
 import 'package:flutter_catalogue_1/widgets/themes.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 void main(){
-  runApp(MyApp());
+  runApp(VxState(
+    store: MyStore(),
+    child: MyApp()));
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
