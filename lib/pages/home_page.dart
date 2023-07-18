@@ -14,7 +14,7 @@ import '../widgets/home_widgets/catalogue_list.dart';
 
 class HomePage extends StatefulWidget {
 
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -46,16 +46,16 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: VxBuilder(
         mutations: const {AddMutation,RemoveMutation},
         builder: (context,store,status) =>FloatingActionButton(
-          backgroundColor: MyTheme.Bluishcolor,
+          backgroundColor: MyTheme.bluishcolor,
           child: Icon(CupertinoIcons.cart),
           onPressed:() {
           Navigator.pushNamed(context, MyRoutes.cartRoutes);
         },).badge(
-          color: MyTheme.Creamcolor,
+          color: MyTheme.creamcolor,
           count: _cart.items.length,
           size: 20,
           textStyle: TextStyle(
-            color: MyTheme.Bluishcolor,
+            color: MyTheme.bluishcolor,
             fontWeight: FontWeight.bold,
           )
         )

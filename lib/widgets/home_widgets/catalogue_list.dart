@@ -10,6 +10,8 @@ import '../themes.dart';
 import 'catalogue_image.dart';
 
 class CatalogList extends StatelessWidget {
+  const CatalogList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -33,8 +35,7 @@ class CatalogItem extends StatelessWidget {
   final Item catalog;
 
   const CatalogItem({Key? key, required this.catalog})
-      : assert(catalog != null),
-        super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class CatalogItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              catalog.name.text.lg.color(MyTheme.Bluishcolor).bold.make(),
+              catalog.name.text.lg.color(MyTheme.bluishcolor).bold.make(),
               catalog.description.text.textStyle(context.captionStyle).make(),
               10.heightBox,
               ButtonBar(

@@ -9,8 +9,7 @@ class HomeDetailsPage extends StatelessWidget {
 final Item catalog;
 
   const HomeDetailsPage({Key? key, required this.catalog}) :
-  assert(catalog !=null)
-  ,super(key: key);
+  super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ final Item catalog;
                appBar: AppBar(
                 backgroundColor: Colors.transparent,
                ),
-               backgroundColor: MyTheme.Creamcolor,
+               backgroundColor: MyTheme.creamcolor,
                body: SafeArea(
                 bottom: false,
                 child: Column(
@@ -47,7 +46,7 @@ final Item catalog;
                     color: Colors.white,
                     child: Column(
                       children: [
-                        catalog.name.text.lg.color(MyTheme.Bluishcolor).xl4.bold.make(),
+                        catalog.name.text.lg.color(MyTheme.bluishcolor).xl4.bold.make(),
                        catalog.description.text.textStyle(context.captionStyle).xl.make(),
                       10.heightBox,
                       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.".

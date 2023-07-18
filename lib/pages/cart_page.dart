@@ -6,7 +6,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../store/store.dart';
 class CartPage extends StatelessWidget {
-CartPage({super.key});
+const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ CartPage({super.key});
         backgroundColor: Colors.transparent,
         title: "Cart".text.xl2.bold.make(),
       ),
-      backgroundColor: MyTheme.Creamcolor,
+      backgroundColor: MyTheme.creamcolor,
       body: Column(
         children: [
           CartList().p32().expand(),
@@ -43,7 +43,7 @@ class Carttotal extends StatelessWidget {
               return "\$${_cart.totalPrice}"
                   .text
                   .xl5
-                  .color(MyTheme.Bluishcolor)
+                  .color(MyTheme.bluishcolor)
                   .make();
               
             },
@@ -58,7 +58,7 @@ class Carttotal extends StatelessWidget {
               );
           },
           style: ButtonStyle(
-            backgroundColor:MaterialStateProperty.all(MyTheme.Bluishcolor) ,), 
+            backgroundColor:MaterialStateProperty.all(MyTheme.bluishcolor) ,), 
           child: "Buy".text.white.make()).w32(context)
         ],
         ),
@@ -66,6 +66,8 @@ class Carttotal extends StatelessWidget {
   }
 }
 class CartList extends StatelessWidget{
+  const CartList({super.key});
+
   
   
   @override

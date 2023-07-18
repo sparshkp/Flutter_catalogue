@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_catalogue_1/utilities/routes.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   
 
   @override
@@ -10,19 +12,19 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String name =" ";
-  bool ChangeButton =false;
+  bool changeButton =false;
 
   final _formkey =GlobalKey<FormState>();
 
   moveToHome(BuildContext context)async{
    if(_formkey.currentState!.validate()){
   setState(() {
-  ChangeButton=true;
+  changeButton=true;
   });
   await Future.delayed(Duration(seconds: 1));
   await Navigator.pushNamed(context, MyRoutes.homeRoutes);
   setState(() {
-  ChangeButton =false;
+  changeButton =false;
   });
                     
   }
@@ -93,15 +95,15 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Material(
                   color: Colors.deepPurple,
-                  borderRadius: BorderRadius.circular(ChangeButton? 20 :8),
+                  borderRadius: BorderRadius.circular(changeButton? 20 :8),
                   child: InkWell(
                     onTap: () =>moveToHome(context),
                     child: AnimatedContainer(
                       duration: Duration(seconds: 1),
                       height: 50,
-                      width: ChangeButton? 50:150,
+                      width: changeButton? 50:150,
                       alignment: Alignment.center,
-                      child: ChangeButton? Icon(Icons.done,color: Colors.white,):
+                      child: changeButton? Icon(Icons.done,color: Colors.white,):
                       Text("Login",style:TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
